@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodiversidad del Agroecosistema Cafetero - Colombia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #8B7355 0%, #A0956B 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .infographic {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #F5F3F0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2D5016 0%, #4A7C59 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '☕';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        
+        .header::after {
+            content: '🌿';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .section {
+            padding: 40px 30px;
+            border-bottom: 3px solid #E8E3D3;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2D5016;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: #4A7C59;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .species-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .species-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .species-name {
+            font-weight: 600;
+            color: #2D5016;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .species-count {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8B4513;
+        }
+        
+        .total-count {
+            background: linear-gradient(135deg, #4A7C59, #2D5016);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .total-count h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .total-count .number {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .relationships-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .relationship-type {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .relationship-type h4 {
+            color: #2D5016;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .relationship-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #F8F6F3;
+            border-radius: 8px;
+        }
+        
+        .relationship-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .diversity-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #4A7C59;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #8B4513;
+            margin: 10px 0;
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: #2D5016;
+            margin-bottom: 5px;
+        }
+        
+        .metric-description {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .conservation-strategies {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .strategy-card {
+            background: linear-gradient(135deg, #F8F6F3, white);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #4A7C59;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .strategy-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .strategy-title {
+            font-weight: 600;
+            color: #2D5016;
+            margin-bottom: 10px;
+        }
+        
+        .strategy-description {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2D5016 0%, #4A7C59 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer-quote {
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .relationships-grid,
+            .conservation-strategies {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <!-- Header -->
+        <div class="header">
+            <h1>Agroecosistema Cafetero</h1>
+            <p>Biodiversidad en Fincas Cafeteras Colombianas</p>
+        </div>
+        
+        <!-- Ecosystem Profile Section -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🌱</div>
+                Perfil del Ecosistema
+            </div>
+            
+            <div class="total-count">
+                <h3>Total de Individuos</h3>
+                <div class="number">448</div>
+            </div>
+            
+            <div class="ecosystem-grid">
+                <div class="species-card">
+                    <span class="species-icon">☕</span>
+                    <div class="species-name">Plantas de Café</div>
+                    <div class="species-count">100</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🐝</span>
+                    <div class="species-name">Abejas Polinizadoras</div>
+                    <div class="species-count">50</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🦋</span>
+                    <div class="species-name">Mariposas</div>
+                    <div class="species-count">30</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🐦</span>
+                    <div class="species-name">Colibríes</div>
+                    <div class="species-count">5</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🪲</span>
+                    <div class="species-name">Escarabajos</div>
+                    <div class="species-count">25</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🦗</span>
+                    <div class="species-name">Polillas</div>
+                    <div class="species-count">25</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🐛</span>
+                    <div class="species-name">Broca del Café</div>
+                    <div class="species-count">88</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🐦‍⬛</span>
+                    <div class="species-name">Aves Insectívoras</div>
+                    <div class="species-count">15</div>
+                </div>
+                
+                <div class="species-card">
+                    <span class="species-icon">🪰</span>
+                    <div class="species-name">Moscas Parasitoides</div>
+                    <div class="species-count">110</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Biological Relationships Section -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🔗</div>
+                Relaciones Biológicas
+            </div>
+            
+            <div class="relationships-grid">
+                <div class="relationship-type">
+                    <h4>Relaciones Intraespecíficas</h4>
+                    <div class="relationship-item">
+                        <span>☕↔️☕</span>
+                        <span>Competencia entre plantas de café</span>
+                    </div>
+                    <div class="relationship-item">
+                        <span>🐝🤝🐝</span>
+                        <span>Cooperación entre abejas</span>
+                    </div>
+                </div>
+                
+                <div class="relationship-type">
+                    <h4>Relaciones Interespecíficas</h4>
+                    <div class="relationship-item">
+                        <span>🐝💕☕</span>
+                        <span>Mutualismo: Abejas y Café</span>
+                    </div>
+                    <div class="relationship-item">
+                        <span>🐛🎯☕</span>
+                        <span>Parasitismo: Broca del Café</span>
+                    </div>
+                    <div class="relationship-item">
+                        <span>🐦‍⬛🍽️🐛</span>
+                        <span>Depredación: Aves sobre Insectos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Biodiversity Index Results Section -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">📊</div>
+                Resultados de Índices de Biodiversidad
+            </div>
+            
+            <div class="diversity-metrics">
+                <div class="metric-card">
+                    <div class="metric-name">Riqueza de Especies</div>
+                    <div class="metric-value">S = 9</div>
+                    <div class="metric-description">Número total de especies</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-name">Índice de Simpson</div>
+                    <div class="metric-value">D = 0.829</div>
+                    <div class="metric-description">Diversidad alta</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-name">Índice de Shannon-Wiener</div>
+                    <div class="metric-value">H' = 1.911</div>
+                    <div class="metric-description">Diversidad moderada-alta</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Conservation Strategies Section -->
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🛡️</div>
+                Estrategias de Conservación
+            </div>
+            
+            <div class="conservation-strategies">
+                <div class="strategy-card">
+                    <span class="strategy-icon">🍄</span>
+                    <div class="strategy-title">Biofertilizantes Micorrízicos</div>
+                    <div class="strategy-description">
+                        Mejorando la salud del suelo y la nutrición de las plantas a través de asociaciones fúngicas beneficiosas que aumentan la resistencia del café y reducen la dependencia de fertilizantes químicos.
+                    </div>
+                </div>
+                
+                <div class="strategy-card">
+                    <span class="strategy-icon">🪰</span>
+                    <div class="strategy-title">Control Biológico de Plagas</div>
+                    <div class="strategy-description">
+                        Utilizando moscas parasitoides como enemigos naturales para controlar las poblaciones de broca del café, manteniendo el equilibrio ecológico mientras se protegen los rendimientos del cultivo.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-quote">
+                "La biodiversidad fortalece el equilibrio y la resistencia en los agroecosistemas cafeteros."
+            </div>
+        </div>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9780c08547e70ce3',t:'MTc1NjY4NzYwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
